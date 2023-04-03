@@ -1,0 +1,139 @@
+body{
+    background-image: url("https://i.imgur.com/Z2w5Wwm.jpg");
+    background-repeat: no-repeat;
+    background-size: 85%;
+    background-position-x: center;
+}
+
+#MainBlock{
+    width: 500px;
+    height: 600px;
+    background-color: white;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 2px 5px 20px gray;
+    margin-top: 150px;
+}
+
+hr {
+    margin-top: -10px;
+}
+#header h2{
+    font-size: 28pt;
+    padding-left: 20px;
+    padding-top: 15px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+#header p{
+    font-size: 13pt;
+    padding-left: 20px;
+    margin-top: -25px;
+    color: rgb(110, 108, 108);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#header img{
+    width: 30px;
+    height: 30px;
+    float: right;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+#section1{
+    padding: 10px 20px;
+}
+
+#section1 input{
+    padding-left: 20px;
+    font-size: 13pt;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgba(128, 128, 128, 0.89);
+    height: 45px;
+    border-radius: 5px;
+    background-color:rgb(255, 255, 248);
+    border: 1px solid rgba(128, 128, 128, 0.801);
+}
+
+#f1{
+    width: 195px;
+    float: left;
+}
+
+#f2{
+    width: 195px;
+    float: right ;
+}
+
+#f3, #f4{
+    width: 435px;
+    margin-top: 10px;
+}
+
+fieldset {
+    border: none;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+#bday select{
+    font-size: 13pt;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgba(128, 128, 128, 0.89);
+    border-radius: 5px;
+    height: 45px;
+    width: 140px;
+}
+
+#s2 {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#sex div{
+    background-color: white;
+    border: 1px solid gray;
+    font-size: 13pt;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgba(128, 128, 128, 0.89);
+    border-radius: 5px;
+    height: 45px;
+    width: 135px;
+    float: left;
+    padding-left: 5px;
+}
+
+#g2 {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.radio{
+    float: right;
+    margin-top: 15px;
+    margin-right: 15px;
+}
+
+#footer{
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 5px;
+    font-size: 10pt;
+}
+
+#sub{
+    font-size: 16pt;
+    width: 250px;
+    height: 45px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background-color: rgb(30, 173, 30);
+    border-radius: 5px;
+    border: none;
+    margin-top: 5px;
+    margin-left: 125px;
+}
+span {
+    color: rgb(30, 70, 203);
+}
