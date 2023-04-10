@@ -1,26 +1,26 @@
 <?php
-include 'db_conn.php';
-if (isset($_POST['submit'])) {
-    $conn = DBConnection::getDbConnection();
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
-    $pass = $_POST['pass'];
-    $email = $_POST['email'];
-    $month = $_POST['month'];
-    $day = $_POST['day'];
-    $year = $_POST['year'];
-    $sex = $_POST['sex'];
+    include 'db_conn.php';
+    if (isset($_POST['submit'])) {
+        $conn = DBConnection::getDbConnection();
+        $firstName = $_POST['firstName'];
+        $lastName = $_POST['lastName'];
+        $pass = $_POST['pass'];
+        $email = $_POST['email'];
+        $month = $_POST['month'];
+        $day = $_POST['day'];
+        $year = $_POST['year'];
+        $sex = $_POST['sex'];
 
 
-    if (!preg_match('~[0-9]+~', $firstName) && !preg_match('~[0-9]+~', $lastName) &&
-        !is_null($month) && !is_null($day) && !is_null($year) && !is_null($sex)) {
+        if (!preg_match('~[0-9]+~', $firstName) && !preg_match('~[0-9]+~', $lastName) &&
+            !is_null($month) && !is_null($day) && !is_null($year) && !is_null($sex)) {
 
-            $query = "INSERT INTO form_data (firstName, lastName, pass, email, month, day, year, sex ) 
-                        VALUES ('$firstName','$lastName', '$pass', '$email', '$month', '$day', '$year', '$sex')";
-            mysqli_query($conn, $query);
+                $query = "INSERT INTO form_data (firstName, lastName, pass, email, month, day, year, sex ) 
+                            VALUES ('$firstName','$lastName', '$pass', '$email', '$month', '$day', '$year', '$sex')";
+                mysqli_query($conn, $query);
+        }
+        else echo '<script>alert("Wrong data entered")</script>';
     }
-    else echo '<script>alert("Wrong data entered")</script>';
-}
 ?>
 
 <!DOCTYPE html>
@@ -32,25 +32,29 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
 <form method="post" action=<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>>
-    <div id="MainBlock">
-        <div id="header">
+    <div class="MainBlock">
+        <div class="header">
             <h2>Sign Up</h2>
             <p>It's quick and easy.</p>
+            <hr>
         </div>
-        <hr>
-        <div id="section1">
-            <input id="f1" type="text" name="firstName" required placeholder='First name'>
-            <input id="f2" type="text" name="lastName" required placeholder="Last name"><br>
-            <input id="f3" type="email" name="email" required placeholder="Email"><br>
-            <input id="f4" type="password" name="pass" required
-                   pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
-                   placeholder="New password"
-                   title="Must contain at least 1 number, 1 uppercase and 1 lowercase letter, 1 special symbol and at least 8 or more characters"><br>
+        <div class="section1">
+            <div class="names">
+                <input type="text" name="firstName" required placeholder='First name'>
+                <input type="text" name="lastName" required placeholder="Last name">
+            </div>
+            <div class="credentials">
+                <input id="f3" type="email" name="email" required placeholder="Email">
+                <input id="f4" type="password" name="pass" required
+                       pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                       placeholder="New password"
+                       title="Must contain at least 1 number, 1 uppercase and 1 lowercase letter, 1 special symbol and at least 8 or more characters">
+            </div>
         </div>
-        <fieldset id="bday">
+        <fieldset class="date">
             <legend>Birthday</legend>
-            <select name='month' value="month">
-                <option value="none" selected disabled hidden>Month</option>
+            <select name='month' value="month" required>
+                <option value="">Month</option>
                 <option value='1'>January</option>
                 <option value='2'>February</option>
                 <option value='3'>March</option>
@@ -65,8 +69,8 @@ if (isset($_POST['submit'])) {
                 <option value='12'>December</option>
             </select>
 
-            <select id="s2" name='day' value="day">
-                <option value="none" selected disabled hidden>Day</option>
+            <select name='day' value="day" required>
+                <option value="">Day</option>
                 <option value='1'>1</option>
                 <option value='2'>2</option>
                 <option value='3'>3</option>
@@ -100,8 +104,8 @@ if (isset($_POST['submit'])) {
                 <option value='31'>31</option>
             </select>
 
-            <select name='year' value="year">
-                <option value="none" selected disabled hidden>Year</option>
+            <select name='year' value="year" required>
+                <option value="">Year</option>
                 <option value='2023'>2023</option>
                 <option value='2022'>2022</option>
                 <option value='2021'>2021</option>
@@ -128,28 +132,28 @@ if (isset($_POST['submit'])) {
                 <option value='2000'>2000</option>
             </select>
         </fieldset>
-        <fieldset id="sex">
+        <fieldset class="sex">
             <legend>Gender</legend>
-            <div>
-                <input class="radio" type="radio" name='sex' value='female'>
+            <div class="radio">
+                <input class="radio" type="radio" name='sex' value='female' required>
                 <p>Female</p>
             </div>
-            <div id="g2">
-                <input class="radio" type="radio" name='sex' value='male'>
+            <div class="radio">
+                <input class="radio" type="radio" name='sex' value='male' required>
                 <p>Male</p>
             </div>
-            <div>
-                <input class="radio" type="radio" name='sex' value='nd'>
+            <div class="radio">
+                <input class="radio" type="radio" name='sex' value='nd' required>
                 <p>Custom</p>
             </div>
         </fieldset>
-        <div id="footer">
+        <div class="footer">
             By clicking Sign Up, you agree to our <span>Terms</span>. Learn how we collect, use and share your data in
             our <span>Data Policy</span> and how we use cookies and similar technology in our
             <span>Cookies Policy</span> . You may receive SMS Notifications from us and can opt out any time.
         </div>
 
-        <input id="sub" type="submit" name="submit" value="Sign Up">
+        <input class="submitButton" type="submit" name="submit" value="Sign Up">
 
     </div>
 </form>

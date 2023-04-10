@@ -1,5 +1,4 @@
 <?php
-// check if the form has been submitted
 class DBConnection
 {
     public static function getDbConnection()
