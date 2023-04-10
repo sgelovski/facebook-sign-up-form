@@ -1,7 +1,6 @@
 <?php
     include 'db_conn.php';
     if (isset($_POST['submit'])) {
-        $conn = DBConnection::getDbConnection();
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
         $pass = $_POST['pass'];
@@ -14,7 +13,7 @@
 
         if (!preg_match('~[0-9]+~', $firstName) && !preg_match('~[0-9]+~', $lastName) &&
             !is_null($month) && !is_null($day) && !is_null($year) && !is_null($sex)) {
-
+                $conn = DBConnection::getDbConnection();
                 $query = "INSERT INTO form_data (firstName, lastName, pass, email, month, day, year, sex ) 
                             VALUES ('$firstName','$lastName', '$pass', '$email', '$month', '$day', '$year', '$sex')";
                 mysqli_query($conn, $query);
