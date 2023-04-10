@@ -18,6 +18,5 @@ class DBConnection
             return $conn;
         }
     }
-
 }
-?>
+

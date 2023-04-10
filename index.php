@@ -11,9 +11,15 @@ if (isset($_POST['submit'])) {
     $year = $_POST['year'];
     $sex = $_POST['sex'];
 
-    $query = "INSERT INTO form_data (firstName, lastName, pass, email, month, day, year, sex ) VALUES ('$firstName','$lastName', '$pass', '$email', '$month', '$day', '$year', '$sex')";
 
-    mysqli_query($conn, $query);
+    if (!preg_match('~[0-9]+~', $firstName) && !preg_match('~[0-9]+~', $lastName) &&
+        !is_null($month) && !is_null($day) && !is_null($year) && !is_null($sex)) {
+
+            $query = "INSERT INTO form_data (firstName, lastName, pass, email, month, day, year, sex ) 
+                        VALUES ('$firstName','$lastName', '$pass', '$email', '$month', '$day', '$year', '$sex')";
+            mysqli_query($conn, $query);
+    }
+    else echo '<script>alert("Wrong data entered")</script>';
 }
 ?>
 
@@ -36,7 +42,10 @@ if (isset($_POST['submit'])) {
             <input id="f1" type="text" name="firstName" required placeholder='First name'>
             <input id="f2" type="text" name="lastName" required placeholder="Last name"><br>
             <input id="f3" type="email" name="email" required placeholder="Email"><br>
-            <input id="f4" type="password" name="pass" required placeholder="New password"><br>
+            <input id="f4" type="password" name="pass" required
+                   pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                   placeholder="New password"
+                   title="Must contain at least 1 number, 1 uppercase and 1 lowercase letter, 1 special symbol and at least 8 or more characters"><br>
         </div>
         <fieldset id="bday">
             <legend>Birthday</legend>
@@ -93,6 +102,9 @@ if (isset($_POST['submit'])) {
 
             <select name='year' value="year">
                 <option value="none" selected disabled hidden>Year</option>
+                <option value='2023'>2023</option>
+                <option value='2022'>2022</option>
+                <option value='2021'>2021</option>
                 <option value='2020'>2020</option>
                 <option value='2019'>2019</option>
                 <option value='2018'>2018</option>
