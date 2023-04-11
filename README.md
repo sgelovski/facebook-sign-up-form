@@ -4,22 +4,27 @@ This is a simple web form that validates the user input and saves the data to My
 
 <img width="1710" alt="Screenshot 2023-04-11 at 1 52 26" src="https://user-images.githubusercontent.com/63150803/231014278-3940c6e6-be30-41d7-9856-8ac629537361.png">
 
-## Validations
-* All fields are required and must not be null
-* The "First name" and "Last name" fields must contain only letters and the symbol '-'
-* The "Email" field must follow the pattern text + @ + text
-* The "New password" field must have at least:
+## First layer of validation
+This is checked direktly in the html tags
+* Using the attribute "require" I guarantee that there are no empty fields
+* The type="email" attribute ensures that the "Email" field must follow the pattern text + @ + text
+* Using the attribute "pattern" with the following RegEx "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" I guarantee a strong password that contains at least:
     * 8 characters
     * 1 uppercase letter
     * 1 lowercase letter
     * 1 special symbol
 
+## Second layer of validation
+It begins when the first layer of validation is passed and the "Sign-up" button is pressed
+* Using the preg_match() function I check if the "First name" and "Last name" fields contain only letters and the symbol '-'
+* Using the is_null() function I check one more time if any of the fields is empty
+
 ## Procedure
-The form cannot be submitted before all fields are filled. 
-When this condition is met the **"Sign Up"** button can be pressed. 
-After this the PHP script takes the user input and stores it in string variables, which are then validated one last time. 
-In case wrong data is founded, a pop-up appears with the message "_Wrong data entered_"
-Finally, if there are no errors, a connection to the MySQL database is opened and the user data is stored inside.
+* The form cannot be submitted before all fields are filled. 
+* When this condition is met the **"Sign Up"** button can be pressed. 
+* After this the PHP script takes the user input and stores it in string variables, which are then validated one last time. 
+* In case wrong data is founded, a pop-up appears with the message "_Wrong data entered_"
+* Finally, if there are no errors, a connection to the MySQL database is opened and the user data is stored inside.
 
 <table>
 <tr>
