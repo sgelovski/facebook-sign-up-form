@@ -5,7 +5,7 @@ This is a simple web form that validates the user input and saves the data to My
 <img width="1710" alt="Screenshot 2023-04-11 at 1 52 26" src="https://user-images.githubusercontent.com/63150803/231014278-3940c6e6-be30-41d7-9856-8ac629537361.png">
 
 ## First layer of validation
-This is checked direktly in the html tags
+This is checked directly in the html tags
 * Using the attribute "require" I guarantee that there are no empty fields
 * The type="email" attribute ensures that the "Email" field must follow the pattern text + @ + text
 * I guarantee a strong password using the attribute "pattern" with the following RegEx 
