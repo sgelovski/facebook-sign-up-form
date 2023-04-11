@@ -8,7 +8,11 @@ This is a simple web form that validates the user input and saves the data to My
 This is checked direktly in the html tags
 * Using the attribute "require" I guarantee that there are no empty fields
 * The type="email" attribute ensures that the "Email" field must follow the pattern text + @ + text
-* Using the attribute "pattern" with the following RegEx "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" I guarantee a strong password that contains at least:
+* I guarantee a strong password using the attribute "pattern" with the following RegEx 
+``` phpregexp
+  ^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
+```
+*  The password must contain at least:
     * 8 characters
     * 1 uppercase letter
     * 1 lowercase letter
@@ -23,8 +27,8 @@ It begins when the first layer of validation is passed and the "Sign-up" button 
 * The form cannot be submitted before all fields are filled. 
 * When this condition is met the **"Sign Up"** button can be pressed. 
 * After this the PHP script takes the user input and stores it in string variables, which are then validated one last time. 
-* In case wrong data is founded, a pop-up appears with the message "_Wrong data entered_"
-* Finally, if there are no errors, a connection to the MySQL database is opened and the user data is stored inside.
+* In case wrong data is founded, a pop-up appears with the message **"_Wrong data entered_"**
+* Finally, if there are no errors, a connection to the MySQL database is opened and the user data is stored inside through a native SQL query.
 
 <table>
 <tr>
